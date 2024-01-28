@@ -3,7 +3,7 @@ import { validationResult } from "express-validator";
 
 export async function validateToken(req, res, next) {
     try {
-        const token = req.headers.authorization.split(" ")[1];
+        const token = req.headers.authorization?.split(" ")[1];
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         if (decoded.exp < Date.now().valueOf() / 1000) {
             return res.status(401).json({
@@ -19,7 +19,7 @@ export async function validateToken(req, res, next) {
 
 export async function validateRefreshToken(req, res, next) {
     try {
-        const token = req.headers.authorization.split(" ")[1];
+        const token = req.headers.authorization?.split(" ")[1];
         const decoded = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
         if (decoded.exp < Date.now().valueOf() / 1000) {
             return res.status(401).json({
