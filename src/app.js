@@ -18,7 +18,7 @@ app.use(cors());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin"}));
 
 app.get("/", (req, res) => {
-  res.send("🦄🌈✨👋🌎🌍🌏✨🌈🦄");
+  res.send("👋🌎");
 });
 
 app.use("/api/v1", api);

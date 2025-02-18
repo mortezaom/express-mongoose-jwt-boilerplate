@@ -7,7 +7,7 @@ export async function validateToken(req, res, next) {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         if (decoded.exp < Date.now().valueOf() / 1000) {
             return res.status(401).json({
-                error: "JWT token has expired, please login to obtain a new one"
+                error: "JWT token has expired, please obtain a new one"
             });
         }
         req.user = decoded;
@@ -23,7 +23,7 @@ export async function validateRefreshToken(req, res, next) {
         const decoded = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
         if (decoded.exp < Date.now().valueOf() / 1000) {
             return res.status(401).json({
-                error: "JWT token has expired, please login to obtain a new one"
+                error: "REFRESH token has expired, please login to obtain a new one"
             });
         }
         req.user = decoded;

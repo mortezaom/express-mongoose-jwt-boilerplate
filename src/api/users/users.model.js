@@ -22,12 +22,7 @@ const userSchema = new Schema({
         default: 'user',
     },
 });
-userSchema.set('toObject', {
-    transform: (doc, ret) => {
-        delete ret.__v;
-        return ret;
-    },
-});
+
 const UserModel = model('users', userSchema);
 
 export default UserModel;
